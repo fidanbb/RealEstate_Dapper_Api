@@ -12,6 +12,35 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
         {
             _context = context;
         }
+
+        public async Task CreateCategoryAsync(CreateCategoryDto request)
+        {
+            string query = "insert into Category (CategoryName,CategoryStatus) values (@categoryName,@categoryStatus)";
+
+            var parametrs = new DynamicParameters();
+
+            parametrs.Add("@categoryName",request.CategoryName);
+            parametrs.Add("@categoryStatus",true);
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parametrs);
+            }
+        }
+
+        public async Task DeleteCategoryAsync(int id)
+        {
+            string query = "Delete from Category where  CategoryID =@categoryID";
+
+            var parametrs = new DynamicParameters();  
+            parametrs.Add("@categoryID",id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parametrs);
+            }
+        }
+
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
         {
             string query = "Select * From Category";
@@ -20,6 +49,23 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
             {
                 var values=await connection.QueryAsync<ResultCategoryDto>(query);
                 return values.ToList();
+            }
+        }
+
+        public async Task UpdateCategoryAsync(UpdateCategoryDto request)
+        {
+            string query = "Update Category Set CategoryName=@categoryName,CategoryStatus=@categoryStatus " +
+                "where categoryID=@categoryID";
+
+            var parametrs = new DynamicParameters();
+
+            parametrs.Add("@categoryName",request.CategoryName);
+            parametrs.Add("@categoryStatus",request.CategoryStatus);
+            parametrs.Add("@categoryID", request.CategoryID);
+
+            using (var connection=_context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query,parametrs);
             }
         }
     }
