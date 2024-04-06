@@ -5,7 +5,7 @@ using RealEstate_Dapper_Api.Repositories.CategoryRepository;
 
 namespace RealEstate_Dapper_Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
@@ -49,6 +49,13 @@ namespace RealEstate_Dapper_Api.Controllers
             _catogoryRepository.UpdateCategoryAsync(request);
 
             return Ok("Category updated successfully...");
+        }
+
+        [HttpGet]   
+       
+        public async Task<IActionResult>GetCategory(int id)
+        {
+            return Ok(await _catogoryRepository.GetCategoryAsync(id));
         }
     }
 }
