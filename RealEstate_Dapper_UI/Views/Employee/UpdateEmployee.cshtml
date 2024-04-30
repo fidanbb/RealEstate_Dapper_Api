@@ -1,0 +1,62 @@
+﻿@model UpdateEmployeeDto
+@{
+    ViewData["Title"] = "UpdateEmployee";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4 ">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Employee Updating Page</h6>
+                <form method="post" asp-action="UpdateEmployee">
+                    <div class="mb-3">
+                        <input asp-for="EmployeeID" type="hidden" class="form-control">
+
+
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Full Name</label>
+                        <input asp-for="Name" type="text" class="form-control">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label">Title</label>
+                        <input asp-for="Title" type="text" class="form-control">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Mail" class="form-label">Mail</label>
+                        <input asp-for="Mail" type="email" class="form-control">
+                        <span asp-validation-for="Mail" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                        <input asp-for="PhoneNumber" type="text" class="form-control">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ImageUrl" class="form-label">Image Url</label>
+                        <input asp-for="ImageUrl" type="text" class="form-control">
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+
+                    </div>
+
+
+
+
+                    <button class="btn btn-primary">Save Employee</button>
+                    <a asp-controller="Employee" asp-action="Index" class="btn btn-danger">Back</a>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
