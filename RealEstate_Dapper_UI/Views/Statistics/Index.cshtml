@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-toggle-on fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Active Category </p>
+                    <h6 class="mb-0">@ViewBag.activeCategoryCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Category Count</p>
+                    <h6 class="mb-0">@ViewBag.categoryCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-star fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Best Category </p>
+                    <h6 class="mb-0">@ViewBag.categoryNameByMaxProductCount</h6>
+                </div>
+            </div>
+        </div>
+       
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-building fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Apartment Count</p>
+                    <h6 class="mb-0">@ViewBag.apartmentCount</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-area fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Average Rental Price</p>
+                    <h6 class="mb-0">@ViewBag.averageProductPriceByRent</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Average Selling Price</p>
+                    <h6 class="mb-0">@ViewBag.averageProductPriceBySale </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-area fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Average Room Count</p>
+                    <h6 class="mb-0">@ViewBag.averageRoomCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-toggle-off fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Passive Category</p>
+                    <h6 class="mb-0">@ViewBag.passiveCategoryCount</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-users fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Active Employee</p>
+                    <h6 class="mb-0">@ViewBag.activeEmployeeCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-map-pin fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">City with most adverts</p>
+                    <h6 class="mb-0"> @ViewBag.cityNameByMaxProductCount </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-arrow-down fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Oldest Building Year</p>
+                    <h6 class="mb-0">@ViewBag.oldestBuildingYear</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-rocket fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Different City Count</p>
+                    <h6 class="mb-0">@ViewBag.differentCityCount</h6>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-newspaper fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Price of Last Advert</p>
+                    <h6 class="mb-0">@ViewBag.lastProductPrice </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-arrow-up fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Newest Building Year</p>
+                    <h6 class="mb-0">@ViewBag.newestBuildingYear</h6>
+                </div>
+            </div>
+        </div>
+      
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-thumbs-up fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Best Employee</p>
+                    <h6 class="mb-0">@ViewBag.employeeNameByMaxProductCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-hand-spock fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Advert Count</p>
+                    <h6 class="mb-0">@ViewBag.productCount</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
