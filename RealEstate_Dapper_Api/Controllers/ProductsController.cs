@@ -29,5 +29,21 @@ namespace RealEstate_Dapper_Api.Controllers
             return Ok(await _productRepository.GetAllProductWithCategoryAsync());
         }
 
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> ActivateDealOfTheDay(int id)
+        {
+          await  _productRepository.ActivateDealOfTheDayAsync(id);
+            return Ok("Deal Of The Day Activated");
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> DeactivateDealOfTheDay(int id)
+        {
+            await _productRepository.DeactivateDealOfTheDayAsync(id);
+            return Ok("Deal Of The Day deactivated");
+        }
+
     }
 }

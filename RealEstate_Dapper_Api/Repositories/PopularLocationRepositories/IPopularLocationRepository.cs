@@ -12,6 +12,6 @@ namespace RealEstate_Dapper_Api.Repositories.PopularLocationRepositories
 
         Task UpdatePopularLocationAsync(UpdatePopularLocationDto request);
 
-        Task<GetByIdPopularLocationDto> GetPopularLocatioinAsync(int id);
+        Task<GetByIdPopularLocationDto> GetPopularLocationAsync(int id);
     }
 }

@@ -34,7 +34,7 @@ namespace RealEstate_Dapper_Api.Controllers
             return Ok("WhoWeAreDetail created successfully...");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
         public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {
@@ -51,7 +51,7 @@ namespace RealEstate_Dapper_Api.Controllers
             return Ok("WhoWeAreDetail updated successfully...");
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
 
         public async Task<IActionResult> GetWhoWeAreDetail(int id)
         {
