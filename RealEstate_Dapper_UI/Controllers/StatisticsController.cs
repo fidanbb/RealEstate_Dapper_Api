@@ -63,7 +63,6 @@ namespace RealEstate_Dapper_UI.Controllers
 
             #endregion
 
-
             #region Average Product Prices By Rent
             var client5 = _httpClientFactory.CreateClient();
 

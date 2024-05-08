@@ -45,5 +45,13 @@ namespace RealEstate_Dapper_Api.Controllers
             return Ok("Deal Of The Day deactivated");
         }
 
+        [HttpGet]
+
+        public async Task<IActionResult>LastFiveProductList()
+        {
+           
+            return Ok(await _productRepository.GetLastFiveProductsAsync());
+        }
+
     }
 }

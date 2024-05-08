@@ -9,5 +9,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
         Task ActivateDealOfTheDayAsync(int id);
         Task DeactivateDealOfTheDayAsync(int id);
 
+        Task<List<ResultLast5ProductWithCategoryDto>> GetLastFiveProductsAsync();
+
     }
 }
