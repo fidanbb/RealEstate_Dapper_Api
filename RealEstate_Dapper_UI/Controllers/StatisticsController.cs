@@ -107,7 +107,7 @@ namespace RealEstate_Dapper_UI.Controllers
             #region Category Count
             var client8 = _httpClientFactory.CreateClient();
 
-            var responseMessage8 = await client6.GetAsync("https://localhost:44322/api/Statistics/CategoryCount");
+            var responseMessage8 = await client8.GetAsync("https://localhost:44322/api/Statistics/CategoryCount");
 
 
             var jsonData8 = await responseMessage8.Content.ReadAsStringAsync();
