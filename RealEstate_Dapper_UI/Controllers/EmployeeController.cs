@@ -1,34 +1,51 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_Dapper_UI.Dtos.EmployeeDtos;
+using RealEstate_Dapper_UI.Services;
 using System.Text;
 
 namespace RealEstate_Dapper_UI.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ILoginService _loginService;
 
-        public EmployeeController(IHttpClientFactory httpClientFactory)
+        public EmployeeController(IHttpClientFactory httpClientFactory,ILoginService loginService)
         {
             _httpClientFactory = httpClientFactory;
+            _loginService = loginService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
 
-            var responseMessage = await client.GetAsync("https://localhost:44322/api/Employees/EmployeeList");
+            var user = User.Claims;
 
-            if (responseMessage.IsSuccessStatusCode)
+            var userId = _loginService.GetUserId;
+            var token=User.Claims.FirstOrDefault(x=>x.Type=="realestatetoken")?.Value;
+
+           
+
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var client = _httpClientFactory.CreateClient();
 
-                var values = JsonConvert.DeserializeObject<List<ResultEmployeeDto>>(jsonData);
+                var responseMessage = await client.GetAsync("https://localhost:44322/api/Employees/EmployeeList");
 
-                return View(values);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+
+                    var values = JsonConvert.DeserializeObject<List<ResultEmployeeDto>>(jsonData);
+
+                    return View(values);
+                }
             }
+           
             return View();
         }
 
