@@ -1,0 +1,47 @@
+﻿@model List<ResultLast5ProductWithCategoryDto>
+
+@{
+    int count = 0;
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">My Last Five Advert</h6>
+            <a asp-controller="Product" asp-action="Index">Show All Adverts</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+                        <th scope="col">#</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">City-District</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">See Advert</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+
+                            <td>@count</td>
+                            <td>@item.AdvertismentDate.ToString("dd-MMM-yyyy")</td>
+                            <td>@item.Title</td>
+                            <td>@item.City-@item.District</td>
+                            <td>@item.CategoryName</td>
+                            <td>$@item.Price</td>
+                            <td><a class="btn btn-sm btn-primary" href="">See Advert</a></td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
