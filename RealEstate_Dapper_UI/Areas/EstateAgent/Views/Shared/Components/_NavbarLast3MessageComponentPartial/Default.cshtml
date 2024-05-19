@@ -1,0 +1,41 @@
+﻿@model List<RealEstate_Dapper_UI.Dtos.MessageDtos.ResultReceivedMessageDto>
+
+
+
+<div class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+        <i class="fa fa-envelope me-lg-2"></i>
+        <span class="d-none d-lg-inline-flex">Message</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+
+        @if(Model.Count ==0){
+            <h6 class="text-center" style="opacity:0.7">No Message</h6>
+        }
+        else{
+            @foreach (var item in Model)
+            {
+                DateTime now = DateTime.Now;
+                TimeSpan timeDifference = now - item.SendDate;
+                int totalDays = timeDifference.Days;
+                int totalHours = timeDifference.Hours;
+                int totalMinutes = timeDifference.Minutes;
+                <a href="#" class="dropdown-item">
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle" src="@item.UserImageUrl" alt="" style="width: 40px; height: 40px;">
+                        <div class="ms-2">
+                            <h6 class="fw-normal mb-0">@item.Name send you a message</h6>
+                            <small>@(totalDays > 0 ? totalDays + " " + "day," : "") @(totalHours > 0 ? totalHours + " " + "hour," : "") @(totalMinutes) minutes </small>
+                        </div>
+                    </div>
+                </a>
+                <hr class="dropdown-divider">
+            }
+            <a href="#" class="dropdown-item text-center">See all message</a>
+        }
+     
+
+
+       
+    </div>
+</div> 

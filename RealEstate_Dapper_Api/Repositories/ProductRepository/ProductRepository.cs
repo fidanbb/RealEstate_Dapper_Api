@@ -106,10 +106,10 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             }
         }
 
-        public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAsync(int id)
+        public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetActiveProductAdvertListByEmployeeAsync(int id)
         {
             string query = "Select ProductID,Title,Price,City,District,Address,Type,CoverImage, CategoryName,DealOfTheDay " +
-      "from Product inner Join Category on Product.ProductCategory=Category.CategoryID where EmployeeId=@employeeID";
+      "from Product inner Join Category on Product.ProductCategory=Category.CategoryID where EmployeeId=@employeeID and ProductStatus = 1";
 
             var parameters = new DynamicParameters();
 
@@ -118,6 +118,23 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDto>(query,parameters);
+
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetPassiveProductAdvertListByEmployeeAsync(int id)
+        {
+            string query = "Select ProductID,Title,Price,City,District,Address,Type,CoverImage, CategoryName,DealOfTheDay " +
+       "from Product inner Join Category on Product.ProductCategory=Category.CategoryID where EmployeeId=@employeeID and ProductStatus = 0";
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@employeeID", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDto>(query, parameters);
 
                 return values.ToList();
             }

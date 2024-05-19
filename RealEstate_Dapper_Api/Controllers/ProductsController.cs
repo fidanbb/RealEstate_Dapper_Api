@@ -55,9 +55,15 @@ namespace RealEstate_Dapper_Api.Controllers
 
         [HttpGet]
 
-        public async Task<IActionResult> ProductAdvertListByEmployeeId(int id)
+        public async Task<IActionResult> ProductActiveAdvertListByEmployeeId(int id)
         {
-            return Ok(await _productRepository.GetProductAdvertListByEmployeeAsync(id));
+            return Ok(await _productRepository.GetActiveProductAdvertListByEmployeeAsync(id));
+        }
+        [HttpGet]
+
+        public async Task<IActionResult> ProducPassiveAdvertListByEmployeeId(int id)
+        {
+            return Ok(await _productRepository.GetPassiveProductAdvertListByEmployeeAsync(id));
         }
 
     }
