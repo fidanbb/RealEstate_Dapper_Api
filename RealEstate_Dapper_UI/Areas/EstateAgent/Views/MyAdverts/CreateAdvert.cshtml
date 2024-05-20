@@ -1,18 +1,17 @@
 ﻿@model CreateProductDto
 @{
-    ViewData["Title"] = "CreateProduct";
-    Layout = "~/Views/Admin/Index.cshtml";
+    ViewData["Title"] = "CreateAdvert";
+    Layout = "~/Areas/EstateAgent/Views/LayoutEstateAgent/Index.cshtml";
 }
-
 
 <div class="container-fluid pt-4 px-4 ">
     <div class="row g-4">
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">New Advert Adding Page</h6>
-                <form method="post" asp-action="CreateCategory">
+                <form method="post" >
                     <div class="mb-3">
-                        <label asp-for="Title" class="form-label">Advert Title</label>
+                        <label asp-for="Title" class="form-label">Title</label>
                         <input asp-for="Title" type="text" class="form-control">
                         <span asp-validation-for="Title" class="text-danger"></span>
 
@@ -34,7 +33,7 @@
                         <label asp-for="ProductCategory" class="form-label">Category</label>
                         @Html.DropDownListFor(x => x.ProductCategory, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
                         <span asp-validation-for="ProductCategory" class="text-danger"></span>
-                            
+
                     </div>
 
                     <div class="mb-3">
@@ -45,7 +44,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Type" class="form-label">Price</label>
+                        <label asp-for="Type" class="form-label">Type</label>
                         <input asp-for="Type" type="text" class="form-control">
                         <span asp-validation-for="Type" class="text-danger"></span>
 
@@ -65,6 +64,13 @@
 
                     </div>
 
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Description</label>
+                        <textarea asp-for="Description" type="text" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+
+                    </div>
+
                     <button class="btn btn-primary">Save Product</button>
                     <a asp-controller="Product" asp-action="Index" class="btn btn-danger">Back</a>
                 </form>
@@ -74,4 +80,5 @@
 
     </div>
 </div>
+
 

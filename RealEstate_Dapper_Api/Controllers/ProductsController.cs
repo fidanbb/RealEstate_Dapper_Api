@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate_Dapper_Api.Dtos.ProductDtos;
 using RealEstate_Dapper_Api.Repositories.ProductRepository;
 
 namespace RealEstate_Dapper_Api.Controllers
@@ -33,7 +34,7 @@ namespace RealEstate_Dapper_Api.Controllers
 
         public async Task<IActionResult> ActivateDealOfTheDay(int id)
         {
-          await  _productRepository.ActivateDealOfTheDayAsync(id);
+            await _productRepository.ActivateDealOfTheDayAsync(id);
             return Ok("Deal Of The Day Activated");
         }
 
@@ -47,9 +48,9 @@ namespace RealEstate_Dapper_Api.Controllers
 
         [HttpGet]
 
-        public async Task<IActionResult>LastFiveProductList()
+        public async Task<IActionResult> LastFiveProductList()
         {
-           
+
             return Ok(await _productRepository.GetLastFiveProductsAsync());
         }
 
@@ -65,6 +66,25 @@ namespace RealEstate_Dapper_Api.Controllers
         {
             return Ok(await _productRepository.GetPassiveProductAdvertListByEmployeeAsync(id));
         }
+
+        [HttpPost]
+
+        public async Task<IActionResult> CreateProduct(CreateProductDto request)
+        {
+            await _productRepository.CreateProductAsync(request);
+
+            return Ok("Product succesfully create");
+        }
+
+        [HttpGet]
+
+        public async Task<IActionResult> GetProductByProductId(int id)
+        {
+
+            return Ok(await _productRepository.GetProductByProductIdDtoAsync(id));
+        }
+
+       
 
     }
 }

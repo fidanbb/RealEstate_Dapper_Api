@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using RealEstate_Dapper_UI.Dtos.CategoryDtos;
 using RealEstate_Dapper_UI.Dtos.ProductDtos;
 using RealEstate_Dapper_UI.Services;
+using System.Text;
 
 namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
 {
@@ -49,6 +52,64 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
                 var values = JsonConvert.DeserializeObject<List<ResultProductAdvertListWithCategoryByEmployeeDto>>(jsonData);
 
                 return View(values);
+            }
+            return View();
+        }
+
+
+        [HttpGet]
+
+        public async Task<IActionResult> CreateAdvert()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44322/api/Categories/CategoryList");
+
+
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+
+
+            List<SelectListItem> categoryValues = (from x in values.ToList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID.ToString()
+                                                   }).ToList();
+
+            ViewBag.v = categoryValues;
+            return View();
+        }
+
+        [HttpPost]
+
+        public async Task< IActionResult> CreateAdvert(CreateProductDto request)
+        {
+            request.DealOfTheDay = false;
+            request.AdvertismentDate = DateTime.Now;
+            request.ProductStatus = true;
+            request.EmployeeID = int.Parse(_loginService.GetUserId);
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+         
+
+            var client = _httpClientFactory.CreateClient();
+
+            var jsonData = JsonConvert.SerializeObject(request);
+
+
+
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var responseMessage = await client.PostAsync("https://localhost:44322/api/Products/CreateProduct", content);
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ActiveAdverts", "MyAdverts", new { area = "EstateAgent" });
             }
             return View();
         }
