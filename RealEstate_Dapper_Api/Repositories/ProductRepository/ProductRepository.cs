@@ -80,7 +80,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             string query = $"Select top(5) ProductID,Title,Price,City,District,ProductCategory, " +
                 $"CategoryName,AdvertismentDate " +
                 $"from Product inner join Category on Product.ProductCategory = Category.CategoryID " +
-                $"where Type='For Rent' order by ProductID Desc";
+                $"where Type='Rent' order by ProductID Desc";
 
             using (var connection = _context.CreateConnection())
             {
@@ -169,7 +169,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<GetProductByProductIdDto> GetProductByProductIdDtoAsync(int id)
         {
-            string query = "Select ProductID,Title,Price,City,District,Address,Type,CoverImage, CategoryName,DealOfTheDay " +
+            string query = "Select ProductID,Title,Price,City,District,Address,Type,CoverImage, CategoryName,DealOfTheDay,AdvertismentDate " +
      "from Product inner Join Category on Product.ProductCategory=Category.CategoryID where ProductId = @productId";
 
             var parameters =new DynamicParameters();

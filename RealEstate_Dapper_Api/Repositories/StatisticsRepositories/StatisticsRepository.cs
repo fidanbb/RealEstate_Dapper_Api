@@ -48,7 +48,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
 
         public async Task<decimal> AverageProductPriceByRentAsync()
         {
-            string query = "Select Avg(Price) from Product where Type = 'For Rent'";
+            string query = "Select Avg(Price) from Product where Type = 'Rent'";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<decimal>(query);
@@ -59,7 +59,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
 
         public async Task<decimal> AverageProductPriceBySaleAsync()
         {
-            string query = "Select Avg(Price) from Product where Type = 'For Sale'";
+            string query = "Select Avg(Price) from Product where Type = 'Buy'";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryFirstOrDefaultAsync<decimal>(query);
