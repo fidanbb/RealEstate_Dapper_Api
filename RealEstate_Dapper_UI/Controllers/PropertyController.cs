@@ -55,16 +55,18 @@ namespace RealEstate_Dapper_UI.Controllers
             ViewBag.district = values.District;
             ViewBag.address = values.Address;
             ViewBag.type = values.Type;
+            ViewBag.description = values.Description;
+            ViewBag.availableDate = values.AdvertismentDate;
 
             ViewBag.bathCount = values2.BathCount;
             ViewBag.date =((DateTime.Now - values.AdvertismentDate).Days)/30;
 
             ViewBag.bedCount = values2.BedRoomCount;
             ViewBag.size = values2.ProductSize;
-            //ViewBag.roomCount = values2.BedRoomCount;
-            //ViewBag.garageCount = values2.garageSize;
-            //ViewBag.buildYear = values2.buildYear;
-
+            ViewBag.roomCount = values2.RoomCount;
+            ViewBag.garageCount = values2.GarageSize;
+            ViewBag.buildYear = values2.BuildYear;
+            
             return View();
         }
     }

@@ -4,6 +4,8 @@
     {
         public int ProductDetailId { get; set; }
         public int BedRoomCount { get; set; }
+
+        public int RoomCount { get; set; }
         public int ProductSize { get; set; }
 
         public int BathCount { get; set; }

@@ -7,6 +7,9 @@
         public int ProductSize { get; set; }
 
         public int BathCount { get; set; }
+
+        public int RoomCount { get; set; }
+
         public int GarageSize { get; set; }
 
         public string BuildYear { get; set; }

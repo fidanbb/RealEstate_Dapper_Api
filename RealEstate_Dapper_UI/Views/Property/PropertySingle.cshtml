@@ -2,7 +2,10 @@
 @{
     ViewData["Title"] = "PropertySingle";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+
+ 
 }
+
 <section class="w3l-about-breadcrumb">
     <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
         <div class="container pt-lg-5 py-3">
@@ -56,33 +59,24 @@
                     <div class="single-post-content">
                         <h3 class="post-content-title mb-3">Description</h3>
                         <p class="mb-4">
-                            Lorem model text, and a search for 'lorem ipsum' will uncover many web sites still in their
-                            infancy. Various
-                            versions have evolved over the years, sometimes by accident, sometimes on purpose
-                            injected humour and the like.
+                          @ViewBag.description
                         </p>
-                        <p class="mb-4">
-                            When you decide to put your business online it is a little bet tricky step
-                            for novice
-                            computer users because they want to keep data safe & secure.
-                            This problem developed from companies which did not take security seriously. Lorem ipsum
-                            dolor sit amet elit.
-                        </p>
+                       
                         <div class="single-bg-white">
                             <h3 class="post-content-title mb-4">Property detail</h3>
                             <ul class="details-list">
-                                <li><strong>Property id :</strong> PRPT12345 </li>
-                                <li><strong>Property size :</strong> 1200sqft </li>
-                                <li><strong>Rooms :</strong> 2 </li>
-                                <li><strong>Bedrooms :</strong> 5 </li>
-                                <li><strong>Bathrooms :</strong> 2 </li>
+                                <li><strong>Property id :</strong> @ViewBag.productId </li>
+                                <li><strong>Property size :</strong> @ViewBag.size sqft </li>
+                                <li><strong>Rooms :</strong> @ViewBag.roomCount </li>
+                                <li><strong>Bedrooms :</strong> @ViewBag.bedRoomCount  </li>
+                                <li><strong>Bathrooms :</strong> @ViewBag.bathCount </li>
                                 <li><strong>Exterior material :</strong> Brick </li>
                                 <li><strong>Structure type :</strong> Wood </li>
                                 <li><strong>Garage size :</strong> 15 cars </li>
-                                <li><strong>Garages :</strong> 15 </li>
-                                <li><strong>Property Price :</strong> $ 750 </li>
-                                <li><strong>Built Year :</strong> 2018 </li>
-                                <li><strong>Avaiable from :</strong> Aug 2019 </li>
+                                <li><strong>Garages :</strong> @ViewBag.garageCount </li>
+                                <li><strong>Price :</strong> $@ViewBag.price </li>
+                                <li><strong>Built Year :</strong> @ViewBag.buildYear </li>
+                                <li><strong>Avaiable from :</strong> @ViewBag.availableDate.ToString("dd MMM") </li>
                             </ul>
                         </div>
                         <div class="single-bg-white">
@@ -116,77 +110,9 @@
                     </div>
                 </div>
             </div>
-            <div class="sidebar-side col-lg-4 col-md-12 col-sm-12 mt-lg-0 mt-5">
-                <aside class="sidebar">
 
-                    <!-- Popular Post Widget-->
-                    <div class="sidebar-widget popular-posts">
-                        <div class="sidebar-title">
-                            <h4>Contact an Agent</h4>
-                        </div>
-
-                        <article class="post">
-                            <figure class="post-thumb">
-                                <img src="~/starter/assets/images/l5.jpg" class="radius-image" alt="">
-                            </figure>
-                            <div class="text mb-0">
-                                <a href="#blog-single">
-                                    Company realty
-                                </a>
-                                <div class="post-info">+(12) 324 567 89</div>
-                                <div class="post-info">companyrealty@mail.com</div>
-                            </div>
-                        </article>
-                        <button type="submit" class="btn btn-primary btn-style w-100">Request details</button>
-                    </div>
-
-
-                    <!-- Popular Post Widget-->
-                    <div class="sidebar-widget popular-posts">
-                        <div class="sidebar-title">
-                            <h4>Popular Post</h4>
-                        </div>
-
-                        <article class="post">
-                            <figure class="post-thumb">
-                                <img src="~/starter/assets/images/l1.jpg" class="radius-image" alt="">
-                            </figure>
-                            <div class="text">
-                                <a href="#blog-single">
-                                    Why we are the best in the business
-                                </a>
-                                <div class="post-info">Sep 09, 2020 - 2 comments</div>
-                            </div>
-                        </article>
-
-                        <article class="post">
-                            <figure class="post-thumb">
-                                <img src="~/starter/assets/images/l2.jpg" class="radius-image" alt="">
-                            </figure>
-                            <div class="text">
-                                <a href="#blog-single">
-                                    Build your next landing page.
-                                </a>
-                                <div class="post-info">Sep 09, 2020 - 2 comments</div>
-                            </div>
-                        </article>
-
-                        <article class="post">
-                            <figure class="post-thumb">
-                                <img src="~/starter/assets/images/l3.jpg" class="radius-image" alt="">
-                            </figure>
-                            <div class="text">
-                                <a href="#blog-single">
-                                    Simply the best. Better than the rest.
-                                </a>
-                                <div class="post-info">Sep 10, 2020 - 2 comments</div>
-                            </div>
-                        </article>
-
-                    </div>
-
-                </aside>
-            </div>
+            @await Component.InvokeAsync("_PropertyAppUserComponentPartial");
+         
         </div>
     </div>
 </section>
