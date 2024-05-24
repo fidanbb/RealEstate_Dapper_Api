@@ -199,5 +199,31 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
                 return value;
             }
         }
+
+        public async Task<List<ResultProductWithSearchListDto>> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city)
+        {
+            string query = "Select ProductID,Title,Price,City,District,Address,Type,CoverImage, CategoryName,DealOfTheDay From Product inner Join Category on Product.ProductCategory=Category.CategoryID Where Title like '%" + searchKeyValue + "%' And ProductCategory=@propertyCategoryId And City=@city";
+            var parameters = new DynamicParameters();
+            parameters.Add("@propertyCategoryId", propertyCategoryId);
+            parameters.Add("@city", city);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductWithSearchListDto>(query, parameters);
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<ResultProductWithCategoryDto>> GetProductsByDealOfDayTrueWithCategoryAsync()
+        {
+            string query = "Select top(6) ProductID,Title,Price,City,District,Address,Type,CoverImage, CategoryName,DealOfTheDay " +
+                "from Product inner Join Category on Product.ProductCategory=Category.CategoryID where DealOfTheDay=1";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
+
+                return values.ToList();
+            }
+        }
     }
 }

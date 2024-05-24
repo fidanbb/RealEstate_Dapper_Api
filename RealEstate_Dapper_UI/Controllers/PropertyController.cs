@@ -31,6 +31,31 @@ namespace RealEstate_Dapper_UI.Controllers
 
         [HttpGet]
 
+        public async Task<IActionResult> PropertyListWithSearch(string searchKeyValue,int propertyCategoryId,string city)
+        {
+           
+            searchKeyValue = TempData["seachText"].ToString();
+
+            propertyCategoryId = int.Parse(TempData["category"].ToString());
+
+            city = TempData["city"].ToString();
+
+            var client = _httpClientFactory.CreateClient();
+
+            var responseMessage = await client.GetAsync($"https://localhost:44322/api/Products/ResultProductWithSearchList/ResultProductWithSearchList?searchKeyValue={searchKeyValue}&propertyCategoryId={propertyCategoryId}&city={city}");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithSearchListDto>>(jsonData);
+
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpGet]
+
         public async Task<IActionResult> PropertySingle(int id)
         {
             id = 1;
@@ -66,7 +91,10 @@ namespace RealEstate_Dapper_UI.Controllers
             ViewBag.roomCount = values2.RoomCount;
             ViewBag.garageCount = values2.GarageSize;
             ViewBag.buildYear = values2.BuildYear;
-            
+            ViewBag.location=values2.Location;
+            ViewBag.videoUrl =values2.VideoUrl;
+
+
             return View();
         }
     }

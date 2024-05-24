@@ -16,7 +16,7 @@ namespace RealEstate_Dapper_UI.ViewComponents.HomePage
         {
             var client =_httpClientFactory.CreateClient();
 
-            var responseMessage = await client.GetAsync("https://localhost:44322/api/Products/ProductListWithCategory");
+            var responseMessage = await client.GetAsync("https://localhost:44322/api/Products/GetProductsByDealOfDayTrueWithCategory/GetProductsByDealOfDayTrueWithCategory");
 
             if (responseMessage.IsSuccessStatusCode)
             {
