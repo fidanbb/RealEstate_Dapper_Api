@@ -23,5 +23,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
 
         Task<List<ResultProductWithCategoryDto>> GetProductsByDealOfDayTrueWithCategoryAsync();
+
+        Task<List<ResultLast3ProductWithCategoryDto>> GetLastThreeProductsAsync();
     }
 }

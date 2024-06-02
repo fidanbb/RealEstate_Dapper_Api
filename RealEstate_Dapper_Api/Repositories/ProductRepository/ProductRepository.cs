@@ -225,5 +225,20 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
                 return values.ToList();
             }
         }
+
+        public async Task<List<ResultLast3ProductWithCategoryDto>> GetLastThreeProductsAsync()
+        {
+            string query = $"Select top(3) ProductID,Title,Price,City,District,CoverImage,ProductCategory, " +
+     $"CategoryName,AdvertismentDate,Description " +
+     $"from Product inner join Category on Product.ProductCategory = Category.CategoryID " +
+     $" order by AdvertismentDate Desc";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultLast3ProductWithCategoryDto>(query);
+
+                return values.ToList();
+            }
+        }
     }
 }
