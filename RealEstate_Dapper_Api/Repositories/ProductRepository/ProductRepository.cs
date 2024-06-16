@@ -95,11 +95,11 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             string query = $"Select top(5) ProductID,Title,Price,City,District,ProductCategory, " +
                $"CategoryName,AdvertismentDate " +
                $"from Product inner join Category on Product.ProductCategory = Category.CategoryID " +
-               $"where EmployeeId=@employeeId order by ProductID Desc";
+               $"where AppUserId=@userId order by ProductID Desc";
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@employeeId",id);
+            parameters.Add("@userId ", id);
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultLast5ProductWithCategoryDto>(query,parameters);
@@ -111,11 +111,11 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetActiveProductAdvertListByEmployeeAsync(int id)
         {
             string query = "Select ProductID,Title,Price,City,District,Address,Type,CoverImage, CategoryName,DealOfTheDay " +
-      "from Product inner Join Category on Product.ProductCategory=Category.CategoryID where EmployeeId=@employeeID and ProductStatus = 1";
+      "from Product inner Join Category on Product.ProductCategory=Category.CategoryID where AppUserId=@userId and ProductStatus = 1";
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@employeeID",id);
+            parameters.Add("@userId",id);
 
             using (var connection = _context.CreateConnection())
             {
@@ -128,11 +128,11 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetPassiveProductAdvertListByEmployeeAsync(int id)
         {
             string query = "Select ProductID,Title,Price,City,District,Address,Type,CoverImage, CategoryName,DealOfTheDay " +
-       "from Product inner Join Category on Product.ProductCategory=Category.CategoryID where EmployeeId=@employeeID and ProductStatus = 0";
+       "from Product inner Join Category on Product.ProductCategory=Category.CategoryID where AppUserId=@userId and ProductStatus = 0";
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@employeeID", id);
+            parameters.Add("@userId", id);
 
             using (var connection = _context.CreateConnection())
             {

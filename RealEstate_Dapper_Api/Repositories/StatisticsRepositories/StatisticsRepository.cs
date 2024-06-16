@@ -129,7 +129,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
         public async Task<string> EmployeeNameByMaxProductCountAsync()
         {
             string query = $"Select Name,Count(*) from Product " +
-                $"inner join Employee on Product.EmployeeID=Employee.EmployeeID " +
+                $"inner join AppUser on Product.AppUserId=AppUser.UserId " +
                 $"group by Name order by Count(*) Desc ";
             using (var connection = _context.CreateConnection())
             {
