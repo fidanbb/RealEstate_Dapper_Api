@@ -10,29 +10,47 @@ The platform is built with two primary layers: Asp.Net Core 8.0 Web API and MVC.
 ## Technologies Used:
 
 Asp.Net Core 8.0 Web Api
+
 Asp.Net Core 8.0 Mvc
+
 Dapper (Db First)
+
 Swagger
+
 MSSQL
+
 Trigger
+
 SignalR
+
 Json Web Token (JWT)
+
 Html
+
 Css (Bootstrap)
+
 JavaScript (JQuery)
+
 
 ## Backend:
 
+
 C# (Asp.Net Core)
+
 MSSQL
+
 Swagger
+
 SignalR
+
 Json Web Token
 
 ## Frontend
 
 Html
+
 Css
+
 JavaScrpit
 
 ## Some Images of the Project:
