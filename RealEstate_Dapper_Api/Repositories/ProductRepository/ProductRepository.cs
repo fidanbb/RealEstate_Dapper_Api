@@ -64,7 +64,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
         {
-            string query = "Select ProductID,Title,Price,City,District,Address,Type,CoverImage, CategoryName,DealOfTheDay " +
+            string query = "Select ProductID,Title,Price,City,District,Address,Type,SlugUrl,CoverImage, CategoryName,DealOfTheDay " +
                 "from Product inner Join Category on Product.ProductCategory=Category.CategoryID";
 
             using (var connection = _context.CreateConnection())
@@ -169,7 +169,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<GetProductByProductIdDto> GetProductByProductIdDtoAsync(int id)
         {
-            string query = "Select ProductID,Title,Price,City,District,Address,Type,Description,CoverImage, CategoryName,DealOfTheDay,AdvertismentDate " +
+            string query = "Select ProductID,Title,Price,City,District,Address,Type,Description,CoverImage, CategoryName,DealOfTheDay,AdvertismentDate,SlugUrl " +
      "from Product inner Join Category on Product.ProductCategory=Category.CategoryID where ProductId = @productId";
 
             var parameters =new DynamicParameters();

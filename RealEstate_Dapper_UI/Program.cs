@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using RealEstate_Dapper_UI.Models;
 using RealEstate_Dapper_UI.Services;
 using System.IdentityModel.Tokens.Jwt;
 
@@ -6,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
+
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettingsKey"));
+
 // Add services to the container.
 builder.Services.AddHttpClient();
 
@@ -13,7 +17,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     (JwtBearerDefaults.AuthenticationScheme, opt =>
     {
         opt.LoginPath = "/Login/Index/";
-        opt.LogoutPath = "/Login/Logout/";
+        opt.LogoutPath = "/Login/LogOut/";
         opt.AccessDeniedPath = "/Pages/AccessDenied/";
         opt.Cookie.HttpOnly = true;
         opt.Cookie.SameSite = SameSiteMode.Strict;
@@ -44,7 +48,10 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-
+app.MapControllerRoute(
+    name: "property",
+    pattern: "property/{slug}/{id}",
+    defaults: new { controller = "Property", action = "PropertySingle" });
 
 app.MapControllerRoute(
     name: "default",

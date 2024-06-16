@@ -54,11 +54,11 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
 
-        [HttpGet]
+        [HttpGet("property/{slug}/{id}")]
 
-        public async Task<IActionResult> PropertySingle(int id)
+        public async Task<IActionResult> PropertySingle(string slug,int id)
         {
-            id = 1;
+            ViewBag.i = id;
 
             var client = _httpClientFactory.CreateClient();
 
@@ -83,19 +83,30 @@ namespace RealEstate_Dapper_UI.Controllers
             ViewBag.description = values.Description;
             ViewBag.availableDate = values.AdvertismentDate;
 
+            ViewBag.slugUrl= values.SlugUrl;
             ViewBag.bathCount = values2.BathCount;
             ViewBag.date =((DateTime.Now - values.AdvertismentDate).Days)/30;
 
-            ViewBag.bedCount = values2.BedRoomCount;
+            ViewBag.bedRoomCount = values2.BedRoomCount;
             ViewBag.size = values2.ProductSize;
             ViewBag.roomCount = values2.RoomCount;
             ViewBag.garageCount = values2.GarageSize;
             ViewBag.buildYear = values2.BuildYear;
             ViewBag.location=values2.Location;
             ViewBag.videoUrl =values2.VideoUrl;
-
-
+            string slugFromTitle = CreateSlug(values.Title);
+            ViewBag.slugUrl = slugFromTitle;
             return View();
+        }
+
+        private string CreateSlug(string title)
+        {
+            title = title.ToLowerInvariant(); // convert to lower case
+            title = title.Replace(" ", "-"); // change spaces to dashes
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"[^a-z0-9\s-]", ""); // Remove invalid characters
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"\s+", " ").Trim(); // Reduce multiple spaces to single space and remove margins
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"\s", "-"); // Replace spaces with dashes
+            return title;
         }
     }
 }

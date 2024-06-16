@@ -13,6 +13,7 @@
         public bool DealOfTheDay { get; set; }
         public DateTime AdvertismentDate { get; set; }
         public string Description { get; set; }
+        public string SlugUrl { get; set; }
 
         public string CategoryName { get; set; }
     }

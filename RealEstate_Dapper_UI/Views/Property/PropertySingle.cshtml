@@ -53,7 +53,7 @@
             <div class="col-lg-8 w3l-news">
                 <div class="blog-single-post">
 
-                    @await Component.InvokeAsync("_PropertySliderComponentPartial");
+                    @await Component.InvokeAsync("_PropertySliderComponentPartial", new { id = ViewBag.i });
                    
 
                     <div class="single-post-content">
@@ -70,16 +70,13 @@
                                 <li><strong>Rooms :</strong> @ViewBag.roomCount </li>
                                 <li><strong>Bedrooms :</strong> @ViewBag.bedRoomCount  </li>
                                 <li><strong>Bathrooms :</strong> @ViewBag.bathCount </li>
-                                <li><strong>Exterior material :</strong> Brick </li>
-                                <li><strong>Structure type :</strong> Wood </li>
-                                <li><strong>Garage size :</strong> 15 cars </li>
                                 <li><strong>Garages :</strong> @ViewBag.garageCount </li>
                                 <li><strong>Price :</strong> $@ViewBag.price </li>
                                 <li><strong>Built Year :</strong> @ViewBag.buildYear </li>
                                 <li><strong>Avaiable from :</strong> @ViewBag.availableDate.ToString("dd MMM") </li>
                             </ul>
                         </div>
-                        @await Component.InvokeAsync("_PropertyAmenityStatusTrueByPropertyIdComponentPartial")
+                        @await Component.InvokeAsync("_PropertyAmenityStatusTrueByPropertyIdComponentPartial", new { id = ViewBag.i })
                     </div>
 
                     <div class="single-bg-white">
@@ -100,7 +97,7 @@
                 </div>
             </div>
 
-            @await Component.InvokeAsync("_PropertyAppUserComponentPartial");
+            @await Component.InvokeAsync("_PropertyAppUserComponentPartial", new { id = ViewBag.i });
          
         </div>
     </div>

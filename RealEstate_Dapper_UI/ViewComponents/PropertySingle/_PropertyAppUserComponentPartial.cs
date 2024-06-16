@@ -15,11 +15,11 @@ namespace RealEstate_Dapper_UI.ViewComponents.PropertySingle
         }
 
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(int id)
         {
             var client=_httpClientFactory.CreateClient();
 
-            var responseMessage = await client.GetAsync("https://localhost:44322/api/AppUsers?id=1");
+            var responseMessage = await client.GetAsync("https://localhost:44322/api/AppUsers?id="+id);
 
             if(responseMessage.IsSuccessStatusCode)
             {

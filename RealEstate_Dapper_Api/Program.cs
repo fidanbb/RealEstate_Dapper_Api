@@ -1,3 +1,4 @@
+using RealEstate_Dapper_Api.Containers;
 using RealEstate_Dapper_Api.Hubs;
 using RealEstate_Dapper_Api.Models.DapperContext;
 using RealEstate_Dapper_Api.Repositories.AmenityRepositories;
@@ -23,27 +24,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddTransient<Context>();
 
-builder.Services.AddTransient<ICatogoryRepository, CategoryRepository>();
-builder.Services.AddTransient<IProductRepository, ProductRepository>();
-builder.Services.AddTransient<IWhoWeAreDetailRepository, WhoWeAreDetailRepository>();
-builder.Services.AddTransient<IServiceRepository, ServiceRepository>();
-builder.Services.AddTransient<IBottomGridRepository, BottomGridRepository>();
-builder.Services.AddTransient<IPopularLocationRepository, PopularLocationRepository>();
-builder.Services.AddTransient<ITestimonialRepository, TestimonialRepository>();
-builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-builder.Services.AddTransient<RealEstate_Dapper_Api.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticsRepositories.IStatisticRepository, RealEstate_Dapper_Api.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticsRepositories.StatisticRepository>();
-builder.Services.AddTransient<IContactRepository, ContactRepository>();
-builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
-builder.Services.AddTransient<IChartRepository, ChartRepository>();
 
-builder.Services.AddTransient<RealEstate_Dapper_Api.Repositories.StatisticsRepositories.IStatisticsRepository, RealEstate_Dapper_Api.Repositories.StatisticsRepositories.StatisticsRepository>();
-builder.Services.AddTransient<IMessageRepository, MessageRepository>();
-builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>();
-builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
-builder.Services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
-builder.Services.AddTransient<ISubFeatureRepository, SubFeatureRepository>();
+builder.Services.ContainerDependencies();
 
 
 builder.Services.AddCors(opt =>
