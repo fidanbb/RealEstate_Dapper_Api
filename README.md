@@ -1,4 +1,4 @@
-# Real Estate Realtor Project (.Net Core 8.0)
+# Real Estate Agent Project (.Net Core 8.0)
 
 ## The Main Purpose of Our Project
 
