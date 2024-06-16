@@ -87,8 +87,17 @@ JavaScrpit
 ![Screenshot 2024-06-16 230425](https://github.com/fidanbb/RealEstate_Dapper_Api/assets/138569787/e3a82caf-b170-4fc7-aa9f-305f5216278a)
 
 ![Screenshot 2024-06-16 230502](https://github.com/fidanbb/RealEstate_Dapper_Api/assets/138569787/a717cd34-fa26-4394-b083-3ac23165360a)
+
 ![Screenshot 2024-06-16 230651](https://github.com/fidanbb/RealEstate_Dapper_Api/assets/138569787/b2a74631-62fc-48e4-832c-512bd6ebc9f1)
+
 ![Screenshot 2024-06-16 230847](https://github.com/fidanbb/RealEstate_Dapper_Api/assets/138569787/e17d4766-c386-4e3d-a5bf-4232bfc5b113)
+
 ![Screenshot 2024-06-16 230937](https://github.com/fidanbb/RealEstate_Dapper_Api/assets/138569787/93cce2d3-b96e-46fa-a2aa-047833ae2290)
+
 ![Screenshot 2024-06-16 231208](https://github.com/fidanbb/RealEstate_Dapper_Api/assets/138569787/a43df406-e781-46bb-a27b-00ca9fc04742)
+
+![Screenshot 2024-06-16 231909](https://github.com/fidanbb/RealEstate_Dapper_Api/assets/138569787/9478c53e-c991-4b6d-930d-9f961d55cf59)
+
+![Screenshot 2024-06-16 231926](https://github.com/fidanbb/RealEstate_Dapper_Api/assets/138569787/d0f1a8e4-a010-4c49-a070-6e0f01ec8a18)
+
 
